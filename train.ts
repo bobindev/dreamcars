@@ -3,8 +3,17 @@ console.log("TRAIN ARIA");
 
 //ZJ-TASK
 
-function reduceNestedArray(array: any[]) {
-  const flattened = array.flat(2);   
-return flattened.reduce((a, b) => a + b);   
+function printNumbers() {
+  let count = 1;
+
+  const interval = setInterval(() => {
+      console.log(count);
+      count++;
+
+      if (count > 5) {
+          clearInterval(interval);
+      }
+  }, 1000);
 }
-console.log(reduceNestedArray([1, [1, 2, [4]]]));
+
+printNumbers();
