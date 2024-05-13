@@ -1,7 +1,7 @@
 //This is TRAIN ARIA
 console.log("TRAIN ARIA");
 
-//ZI-TASK
+//ZL-TASK
 
 function stringToKebab(string: string) {
   let lowerCase = string.toLowerCase();
