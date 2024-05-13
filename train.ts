@@ -1,19 +1,12 @@
 //This is TRAIN ARIA
 console.log("TRAIN ARIA");
 
-//ZJ-TASK
+//ZI-TASK
 
-function printNumbers() {
-  let count = 1;
-
-  const interval = setInterval(() => {
-      console.log(count);
-      count++;
-
-      if (count > 5) {
-          clearInterval(interval);
-      }
-  }, 1000);
+function stringToKebab(string: string) {
+  let lowerCase = string.toLowerCase();
+  let stringKebab = lowerCase.replace(/\s+/g, "-");
+  return stringKebab;
 }
 
-printNumbers();
+console.log(stringToKebab("I love Kebab"));

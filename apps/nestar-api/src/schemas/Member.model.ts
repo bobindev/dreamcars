@@ -111,9 +111,9 @@ const MemberSchema = new Schema({
 	},
 
 	deletedAt: {
-		type: Number,
-		default: 0,
+		type: Date,
 	},
+  
 }, {timestamps: true, collection: 'members'},
 );
 
