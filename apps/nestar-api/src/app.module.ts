@@ -27,7 +27,7 @@ import { T } from './libs/types/common';
         return graphQLFormattedError;
       }
 		}),
-		ComponentsModule,
+		ComponentsModule, 
 		DatabaseModule,
 	],
 	controllers: [AppController],
