@@ -1,12 +1,11 @@
 //This is TRAIN ARIA
-console.log("TRAIN ARIA");
+console.log('TRAIN ARIA:');
 
-//ZL-TASK
+//ZM-TASK
 
-function stringToKebab(string: string) {
-  let lowerCase = string.toLowerCase();
-  let stringKebab = lowerCase.replace(/\s+/g, "-");
-  return stringKebab;
+function reverseInteger(Int: number) {
+	let reverse = Int.toString().split('').reverse().join('');
+	return reverse;
 }
 
-console.log(stringToKebab("I love Kebab"));
+console.log(reverseInteger(123456789));
