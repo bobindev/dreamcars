@@ -3,16 +3,18 @@ console.log('TRAIN ARIA:');
 
 //ZL -TASK
 
-
-function rotateArray(arr: string | any[], index: number) {
-  let newArr = [];
-  for (let i = 0; i < arr.length; i++) {
-      if (i <= index) {
-          newArr.push(arr[i]);
-      } else if (i > index) {
-          newArr.unshift(arr[i]);
+function areParenthesesBalanced (str: string | any[]) {
+  let count=0;
+  for (let i = 0; i < str.length; i++) {
+      if (str[i] === '(') {
+          count++;
+      } else if (str[i] === ')') {
+          count--;
       }
-  } return newArr;
+      if (count < 0) {
+          return false;
+      }
+  } return count == 0; 
 }
 
-console.log(rotateArray([1, 2, 3, 4, 5, 6], 3) );
+console.log(areParenthesesBalanced("string()ichida(qavslar)soni()balansda"))
