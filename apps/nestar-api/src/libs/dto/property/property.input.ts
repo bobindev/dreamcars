@@ -2,7 +2,7 @@ import { Field, InputType, Int} from "@nestjs/graphql";
 import { IsIn, IsInt, IsNotEmpty, IsOptional, Length, Min, } from "class-validator";
 import { PropertyLocation, PropertyStatus, PropertyType } from "../../enums/property.enum";
 import { ObjectId } from "mongoose";
-import { availableOptions, availablePropertySorts } from "../../config";
+import { availableOptions, availablePropertySorts, } from "../../config";
 import { Direction } from "../../enums/common.enum";
 
 
@@ -156,8 +156,8 @@ export class PropertiesInquiry {
 
 
   @IsOptional()
-  @IsInt()
-  @Field((availablePropertySorts) => String, {nullable: true})
+  @IsIn(availablePropertySorts )
+  @Field(() => String, {nullable: true})
   sort?: string;
 
   @IsOptional()
@@ -190,8 +190,8 @@ export class AgentPropertiesInquiry {
   limit: number;
 
   @IsOptional()
-  @IsInt()
-  @Field((availablePropertySorts) => String, {nullable: true})
+  @IsIn(availablePropertySorts)
+  @Field(() => String, {nullable: true})
   sort?: string;
 
   @IsOptional()
@@ -227,8 +227,8 @@ export class AllPropertiesInquiry {
   limit: number;
 
   @IsOptional()
-  @IsInt()
-  @Field((availablePropertySorts) => String, {nullable: true})
+  @IsIn(availablePropertySorts)
+  @Field(() => String, {nullable: true})
   sort?: string;
 
   @IsOptional()
