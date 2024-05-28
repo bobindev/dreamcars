@@ -7,8 +7,6 @@ import { LikeModule } from './like/like.module';
 import { ViewModule } from './view/view.module';
 import { FollowModule } from './follow/follow.module';
 import { BoardArticleModule } from './board-article/board-article.module';
-import { ComentResolver } from './coment/coment.resolver';
-import { ComentService } from './coment/coment.service';
 
 @Module({
 	imports: [
@@ -20,7 +18,6 @@ import { ComentService } from './coment/coment.service';
 		LikeModule,
 		ViewModule,
 		FollowModule,		
-	],
-	providers: [ComentResolver, ComentService],
+	]
 })
 export class ComponentsModule {}
