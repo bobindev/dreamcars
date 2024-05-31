@@ -14,8 +14,9 @@ import { MemberModule } from '../member/member.module';
 				schema: FollowSchema,
 			},
 		]),
+    
     AuthModule,
-    MemberModule
+    MemberModule,
 	],
   providers: [FollowResolver, FollowService],
   exports: [FollowService]
