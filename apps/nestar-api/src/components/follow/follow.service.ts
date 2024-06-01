@@ -7,7 +7,7 @@ import { FollowInquiry } from '../../libs/dto/follow/follow.input';
 import { Direction, Message } from '../../libs/enums/common.enum';
 import { internalExecuteOperation } from '@apollo/server/dist/esm/ApolloServer';
 import { T } from '../../libs/types/common';
-import { lookupAuthMemberLiked, lookupFollowerData, lookupFollowingData } from '../../libs/config';
+import { lookupAuthMemberFollowed, lookupAuthMemberLiked, lookupFollowerData, lookupFollowingData } from '../../libs/config';
 
 @Injectable()
 export class FollowService {
@@ -75,10 +75,9 @@ export class FollowService {
 					$facet: {
 						list: [
 							{ $skip: (page - 1) * limit },
-							{ $limit: limit },
-							//meLiked
-              lookupAuthMemberLiked(memberId, "$followingId"),
-							//meFollowed
+							{ $limit: limit },							
+              lookupAuthMemberLiked(memberId, "$followingId"), //meLiked
+							lookupAuthMemberFollowed({followerId: memberId, followingId: "$followingId"}),//meFollowed
 							lookupFollowingData,
 							{ $unwind: '$followingData' },
 						],
@@ -106,10 +105,9 @@ export class FollowService {
 					$facet: {
 						list: [
 							{ $skip: (page - 1) * limit },
-							{ $limit: limit },
-							//meLiked
-              lookupAuthMemberLiked(memberId, "$followerId"),
-							//meFollowed
+							{ $limit: limit },							
+              lookupAuthMemberLiked(memberId, "$followerId"), //meLiked
+							lookupAuthMemberFollowed({followerId: memberId, followingId: "$followerId"}),//meFollowed
 							lookupFollowerData,
 							{ $unwind: '$followerData' },
 						],
