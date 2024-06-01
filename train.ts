@@ -1,14 +1,13 @@
 //This is TRAIN ARIA
 console.log('TRAIN ARIA:');
 
-//ZS-TASK
+//ZT-TASK
 
-function singleNumber(arr) {
-  let result = 0;
-  for (let i = 0; i < arr.length; i++) {
-    result ^= arr[i];
+function firstUniqueCharIndex(str) {
+  for(let i = 0; i < str.length; i++) {
+      if(str.indexOf(str[i]) === str.lastIndexOf(str[i])) {
+          return i;
+      }
   }
-  return result;
 }
-
-console.log(singleNumber([4, 2, 1, 2, 1]));
+console.log(firstUniqueCharIndex('stamp'));
