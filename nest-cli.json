@@ -1,32 +1,32 @@
 {
-  "$schema": "https://json.schemastore.org/nest-cli",
-  "collection": "@nestjs/schematics",
-  "sourceRoot": "apps/nestar-api/src",
-  "compilerOptions": {
-    "deleteOutDir": true,
-    "webpack": true,
-    "tsConfigPath": "apps/nestar-api/tsconfig.app.json"
-  },
-  "monorepo": true,
-  "root": "apps/nestar-api",
-  "projects": {
-    "nestar-api": {
-      "type": "application",
-      "root": "apps/nestar-api",
-      "entryFile": "main",
-      "sourceRoot": "apps/nestar-api/src",
-      "compilerOptions": {
-        "tsConfigPath": "apps/nestar-api/tsconfig.app.json"
-      }
-    },
-    "nestar-batch": {
-      "type": "application",
-      "root": "apps/nestar-batch",
-      "entryFile": "main",
-      "sourceRoot": "apps/nestar-batch/src",
-      "compilerOptions": {
-        "tsConfigPath": "apps/nestar-batch/tsconfig.app.json"
-      }
-    }
-  }
+	"$schema": "https://json.schemastore.org/nest-cli",
+	"collection": "@nestjs/schematics",
+	"sourceRoot": "apps/dreamcar-api/src",
+	"compilerOptions": {
+		"deleteOutDir": true,
+		"webpack": true,
+		"tsConfigPath": "apps/dreamcar-api/tsconfig.app.json"
+	},
+	"monorepo": true,
+	"root": "apps/dreamcar-api",
+	"projects": {
+		"dreamcar-api": {
+			"type": "application",
+			"root": "apps/dreamcar-api",
+			"entryFile": "main",
+			"sourceRoot": "apps/dreamcar-api/src",
+			"compilerOptions": {
+				"tsConfigPath": "apps/dreamcar-api/tsconfig.app.json"
+			}
+		},
+		"dreamcar-batch": {
+			"type": "application",
+			"root": "apps/dreamcar-batch",
+			"entryFile": "main",
+			"sourceRoot": "apps/dreamcar-batch/src",
+			"compilerOptions": {
+				"tsConfigPath": "apps/dreamcar-batch/tsconfig.app.json"
+			}
+		}
+	}
 }
