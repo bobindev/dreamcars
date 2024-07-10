@@ -1,12 +1,26 @@
 import { registerEnumType } from '@nestjs/graphql';
 
 export enum PropertyType {
-	APARTMENT = 'APARTMENT',
-	VILLA = 'VILLA',
-	HOUSE = 'HOUSE',
+	COMPACT = 'COMPACT',
+	SEDAN = 'SEDAN',
+	HATCHBACK = 'HATCHBACK',
+  SUV = 'SUV',
+	VAN = 'VAN',
+  TRUCK = 'TRUCK',
 }
 registerEnumType(PropertyType, {
 	name: 'PropertyType',
+});
+
+export enum PropertyMaker {
+	HYUNDAI = 'HYUNDAI',
+	KIA = 'KIA',
+	GENESIS = 'GENESIS',
+  GM = 'GM',
+	SSANGYONG = 'SSANGYONG',
+} 
+registerEnumType(PropertyMaker, {
+	name: 'PropertyMaker',
 });
 
 export enum PropertyStatus {
@@ -31,4 +45,16 @@ export enum PropertyLocation {
 }
 registerEnumType(PropertyLocation, {
 	name: 'PropertyLocation',
+});
+
+export enum PropertyFuel {
+  ELECTRIC = 'ELECTRIC',
+  GASOLINE = 'GASOLINE',
+  HYBRID = 'HYBRID',
+  DIESEL = 'DIESEL',
+  LPG = 'LPG'
+}
+
+registerEnumType(PropertyFuel, {
+	name: 'PropertyFuel',
 });

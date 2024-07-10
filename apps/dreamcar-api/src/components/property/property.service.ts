@@ -134,25 +134,29 @@ export class PropertyService {
 	private shapeMatchQuery(match: T, input: PropertiesInquiry): void {
 		const {
 			memberId,
+      makeList,
+      yearList,
 			locationList,
-			roomsList,
-			bedsList,
+			colorList,
+			fuelList,
 			typeList,
 			periodsRange,
 			pricesRange,
-			squaresRange,
+			mileageRange,
 			options,
 			text,
 		} = input.search;
 		if (memberId) match.memberId = shapeIntoMongoObjectId(memberId);
 		if (locationList && locationList.length) match.propertyLocation = { $in: locationList };
-		if (roomsList && roomsList.length) match.propertyRooms = { $in: roomsList };
-		if (bedsList && bedsList.length) match.propertyBeds = { $in: bedsList };
+		if (makeList && makeList.length) match.propertyMaker = { $in: makeList };
+    if (colorList && colorList.length) match.propertyColor = { $in: colorList };
+		if (fuelList && fuelList.length) match.propertyFuel = { $in: fuelList };
 		if (typeList && typeList.length) match.propertyType = { $in: typeList };
+    if (yearList && yearList.length) match.propertyYear = { $in: yearList };
 
 		if (pricesRange) match.propertyPrice = { $gte: pricesRange.start, $lte: pricesRange.end };
 		if (periodsRange) match.createdAt = { $gte: periodsRange.start, $lte: periodsRange.end };
-		if (squaresRange) match.propertySquare = { $gte: squaresRange.start, $lte: squaresRange.end };
+		if (mileageRange) match.propertyMileage = { $gte: mileageRange.start, $lte: mileageRange.end };
 
 		if (text) match.propertyTitle = { $regex: new RegExp(text, 'i') };
 

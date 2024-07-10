@@ -1,11 +1,17 @@
 import { Schema } from 'mongoose';
-import { PropertyLocation, PropertyStatus, PropertyType } from '../libs/enums/property.enum';
+import { PropertyLocation, PropertyMaker, PropertyStatus, PropertyType } from '../libs/enums/property.enum';
 
 const PropertySchema = new Schema(
 	{
 		propertyType: {
 			type: String,
 			enum: PropertyType,
+			required: true,
+		},
+
+    propertyMaker: {
+			type: String,
+			enum: PropertyMaker,
 			required: true,
 		},
 
@@ -26,8 +32,13 @@ const PropertySchema = new Schema(
 			required: true,
 		},
 
-		propertyTitle: {
+		propertyModel: {
 			type: String,
+			required: true,
+		},
+
+    propertyYear: {
+			type: Number,
 			required: true,
 		},
 
@@ -36,18 +47,18 @@ const PropertySchema = new Schema(
 			required: true,
 		},
 
-		propertySquare: {
+		propertyColor: {
+			type: String,
+			required: true,
+		},
+
+		propertyMileage: {
 			type: Number,
 			required: true,
 		},
 
-		propertyBeds: {
-			type: Number,
-			required: true,
-		},
-
-		propertyRooms: {
-			type: Number,
+		propertyFuel: {
+			type: String,
 			required: true,
 		},
 
@@ -111,6 +122,7 @@ const PropertySchema = new Schema(
 	{ timestamps: true, collection: 'properties' },
 );
 
-PropertySchema.index({ propertyType: 1, propertyLocation: 1, propertyTitle: 1, propertyPrice: 1 }, { unique: true });
+// quyidagi mantiqda, bir xil ma`lumotlar qayta-qayta kiritilishiga yo`l qoymaslik un tuzilgan ': 1'
+PropertySchema.index({ propertyType: 1, propertyLocation: 1, propertyModel: 1, propertyPrice: 1 }, { unique: true });
 
 export default PropertySchema;

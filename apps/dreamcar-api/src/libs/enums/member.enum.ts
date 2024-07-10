@@ -5,6 +5,8 @@ export enum MemberType {
   AGENT = 'AGENT',
   ADMIN = 'ADMIN',
 }
+
+//graphql da ishlatish uchun registerEnumType degan comanda kerak bdi
 registerEnumType(MemberType, {
   name: 'MemberType',
 });

@@ -2,7 +2,7 @@
 
 import { Field, Int, ObjectType } from "@nestjs/graphql";
 import { ObjectId } from "mongoose";
-import { PropertyLocation, PropertyStatus, PropertyType } from "../../enums/property.enum";
+import { PropertyFuel, PropertyLocation, PropertyMaker, PropertyStatus, PropertyType } from "../../enums/property.enum";
 import { Member, TotalCounter } from "../member/member";
 import { MeLiked } from "../like/like";
 
@@ -16,6 +16,9 @@ export class Property {
   @Field(() => PropertyType)
   propertyType: PropertyType;
 
+  @Field(() => PropertyMaker)
+  propertyMaker: PropertyMaker;
+
   @Field(() => PropertyStatus)
   propertyStatus: PropertyStatus;
 
@@ -26,19 +29,22 @@ export class Property {
   propertyAddress: string;
 
   @Field(() => String)
-  propertyTitle: string;
+  propertyModel: string;
+  
+  @Field(() => Int)
+  propertyYear: number;
 
   @Field(() => Number)
   propertyPrice: number;
 
-  @Field(() => Number)
-  propertySquare: number;
+  @Field(() => String)
+  propertyColor: string;
 
   @Field(() => Int)
-  propertyBeds: number;
+  propertyMileage: number;
 
-  @Field(() => Int)
-  propertyRooms: number;
+  @Field(() => PropertyFuel)
+  propertyFuel: PropertyFuel;
 
   @Field(() => Int)
   propertyViews: number;
