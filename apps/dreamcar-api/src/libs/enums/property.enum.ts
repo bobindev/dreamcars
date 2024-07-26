@@ -23,6 +23,8 @@ registerEnumType(PropertyMaker, {
 	name: 'PropertyMaker',
 });
 
+//propertyModel
+
 export enum PropertyStatus {
 	ACTIVE = 'ACTIVE',
 	SOLD = 'SOLD',
@@ -58,3 +60,24 @@ export enum PropertyFuel {
 registerEnumType(PropertyFuel, {
 	name: 'PropertyFuel',
 });
+
+
+export enum PropertyColor {
+  GREY = 'GREY',
+  BLACK = 'BLACK',
+  WHITE = 'WHITE',
+  SILVER = 'SILVER',
+  DARK_RED = 'DARK RED',
+  DARK_BROWN = 'DARK BROWN',
+  ORANGE = 'ORANGE',
+  LIGHT_BLUE = 'LIGHT BLUE',
+  LIGHT_BROWN = 'LIGHT BROWN'
+}
+
+registerEnumType(PropertyColor, {
+	name: 'PropertyColor',
+});
+
+
+
+export const propertyColor = ['Grey', 'Black', 'White', 'Silver', 'Dark Red', 'Dark Blue', 'Dark Brown', 'Orange', 'Light Blue', 'Light Brown'];

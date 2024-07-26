@@ -1,4 +1,4 @@
-import { Controller, Get, Logger } from '@nestjs/common';
+ import { Controller, Get, Logger } from '@nestjs/common';
 import { BatchService } from './batch.service';
 import { Cron, Interval, Timeout } from '@nestjs/schedule';
 

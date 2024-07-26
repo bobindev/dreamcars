@@ -1,6 +1,6 @@
 import { Field, InputType, Int } from '@nestjs/graphql';
 import { IsIn, IsInt, IsNotEmpty, IsOptional, Length, Min } from 'class-validator';
-import { PropertyFuel, PropertyLocation, PropertyMaker, PropertyStatus, PropertyType } from '../../enums/property.enum';
+import { PropertyColor, PropertyFuel, PropertyLocation, PropertyMaker, PropertyStatus, PropertyType } from '../../enums/property.enum';
 import { ObjectId } from 'mongoose';
 import { availableOptions, availablePropertySorts } from '../../config';
 import { Direction } from '../../enums/common.enum';
@@ -38,8 +38,8 @@ export class PropertyInput {
 	propertyPrice: number;
 
 	@IsNotEmpty()
-	@Field(() => String)
-	propertyColor: string;
+	@Field(() => PropertyColor)
+	propertyColor: PropertyColor;
 
 	@IsNotEmpty()
 	@IsInt()
@@ -121,16 +121,16 @@ export class PISearch {
 	typeList?: PropertyType[];
 
 	@IsOptional()
-	@Field(() => [String], { nullable: true })
-	colorList?: string[];
+	@Field(() => [PropertyColor], { nullable: true })
+	colorList?: PropertyColor[];
 
   @IsOptional()
 	@Field(() => [Int], { nullable: true })
 	yearList?: Number[];
 
 	@IsOptional()
-	@Field(() => [String], { nullable: true })
-	fuelList?: string[];
+	@Field(() => [PropertyFuel], { nullable: true })
+	fuelList?: PropertyFuel[];
 
 	@IsOptional()
 	@IsIn(availableOptions, { each: true })

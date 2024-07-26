@@ -1,5 +1,5 @@
 import { Schema } from 'mongoose';
-import { PropertyLocation, PropertyMaker, PropertyStatus, PropertyType } from '../libs/enums/property.enum';
+import { PropertyColor, PropertyFuel, PropertyLocation, PropertyMaker, PropertyStatus, PropertyType } from '../libs/enums/property.enum';
 
 const PropertySchema = new Schema(
 	{
@@ -49,6 +49,7 @@ const PropertySchema = new Schema(
 
 		propertyColor: {
 			type: String,
+      enum: PropertyColor,
 			required: true,
 		},
 
@@ -59,6 +60,7 @@ const PropertySchema = new Schema(
 
 		propertyFuel: {
 			type: String,
+      enum: PropertyFuel,
 			required: true,
 		},
 
@@ -123,6 +125,6 @@ const PropertySchema = new Schema(
 );
 
 // quyidagi mantiqda, bir xil ma`lumotlar qayta-qayta kiritilishiga yo`l qoymaslik un tuzilgan ': 1'
-PropertySchema.index({ propertyType: 1, propertyLocation: 1, propertyModel: 1, propertyPrice: 1 }, { unique: true });
+
 
 export default PropertySchema;
