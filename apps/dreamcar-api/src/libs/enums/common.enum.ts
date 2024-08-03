@@ -7,6 +7,7 @@ export enum Message {
   UPDATE_FAILED = 'Update failed!',
   BAD_REQUEST = 'Bad request!',
   REMOVE_FAILED = 'Remove failed!',
+  FETCH_FAILED = 'Data fatching failed',
 
   USED_MEMBER_NICK_OR_PHONE = 'Already used member nick or phone',
   NO_MEMBER_NICK = 'No member with that member nick',
@@ -19,6 +20,7 @@ export enum Message {
   PROVIDE_ALLOWED_FORMAT = 'Please provide jpg, jpeg, or pnp images!',
   SELF_SUBSCRIPTION_DENIED = 'Self subscribtion is denied!',
   UPLOAD_FAILED = "UPLOAD_FAILED",
+  NOT_FOUND = 'Data is not founded!'
 }
 
 export enum Direction {

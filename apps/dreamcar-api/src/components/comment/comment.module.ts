@@ -7,6 +7,7 @@ import { AuthModule } from '../auth/auth.module';
 import { MemberModule } from '../member/member.module';
 import { BoardArticleModule } from '../board-article/board-article.module';
 import { PropertyModule } from '../property/property.module';
+import { NotificationModule } from '../notification/notification.module';
 
 @Module({
   imports: [
@@ -19,6 +20,7 @@ import { PropertyModule } from '../property/property.module';
 		AuthModule, 
     MemberModule,
     PropertyModule,
+    NotificationModule,
     BoardArticleModule
 	],
   providers: [CommentResolver, CommentService]

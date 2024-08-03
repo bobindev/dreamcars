@@ -1,4 +1,4 @@
-import { BadRequestException, Injectable } from '@nestjs/common';
+import { BadRequestException, forwardRef, Inject, Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { Like, MeLiked } from '../../libs/dto/like/like';
 import { Model, ObjectId } from 'mongoose';
@@ -9,12 +9,20 @@ import { OrdinaryInquiry } from '../../libs/dto/property/property.input';
 import { Properties } from '../../libs/dto/property/property';
 import { LikeGroup } from '../../libs/enums/like.enum';
 import { lookupFavorite } from '../../libs/config';
+import { NotificationService } from '../notification/notification.service';
+import { MemberService } from '../member/member.service';
+import { NotificationGroup, NotificationType } from '../../libs/enums/notification.enum';
 
 @Injectable()
 export class LikeService {
-	constructor(@InjectModel('Like') private readonly likeModel: Model<Like>) {}
+	constructor(
+		@InjectModel('Like') private readonly likeModel: Model<Like>,
+		private readonly notificationService: NotificationService,
+		@Inject(forwardRef(() => MemberService)) private readonly memberService: MemberService,
+	) {}
 
 	public async toggleLike(input: LikeInput): Promise<number> {
+    const { likeGroup, likeRefId, memberId } = input;
 		const search: T = { memberId: input.memberId, likeRefId: input.likeRefId },
 			exist = await this.likeModel.findOne(search).exec();
 		let modifier = 1;
@@ -22,9 +30,11 @@ export class LikeService {
 		if (exist) {
 			await this.likeModel.findOneAndDelete(search).exec();
 			modifier = -1;
+			await this.notificationService.createNotificationForUnlike(likeGroup, likeRefId, memberId);
 		} else {
 			try {
 				await this.likeModel.create(input);
+				await this.notificationService.createNotificationForLike(likeGroup, likeRefId, memberId);
 			} catch (err) {
 				console.log('Error, Service.model:', err.message);
 				throw new BadRequestException(Message.CREATE_FAILED);

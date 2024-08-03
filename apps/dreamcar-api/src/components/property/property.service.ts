@@ -158,7 +158,7 @@ export class PropertyService {
 		if (periodsRange) match.createdAt = { $gte: periodsRange.start, $lte: periodsRange.end };
 		if (mileageRange) match.propertyMileage = { $gte: mileageRange.start, $lte: mileageRange.end };
 
-		if (text) match.propertyTitle = { $regex: new RegExp(text, 'i') };
+		if (text) match.propertyModel = { $regex: new RegExp(text, 'i') };
 
 		if (options) {
 			match['$or'] = options.map((ele) => {
