@@ -12,19 +12,19 @@ import { ContactInput } from '../../libs/dto/contact/contact.input';
 export class NotificationService {
 	constructor(
 		@InjectModel('Notification') private notificationModel: Model<Notification>,
-		@InjectModel('Property') private propertyModel: Model<Property>, 
-		@InjectModel('BoardArticle') private boardArticle: Model<BoardArticle>, 
-		@InjectModel('Member') private memberModel: Model<Member>, 
+		@InjectModel('Property') private propertyModel: Model<Property>,
+		@InjectModel('BoardArticle') private boardArticle: Model<BoardArticle>,
+		@InjectModel('Member') private memberModel: Model<Member>,
 	) {}
 
 	async createNotificationForLike(likeType: string, likeId: ObjectId, authorId: ObjectId): Promise<void> {
 		let receiverId: ObjectId;
 		let authorName = '';
-    let notificationDesc = '';
+		let notificationDesc = '';
 
 		const author = await this.memberModel.findById(authorId);
 		if (author) {
-			authorName = author.memberNick; 
+			authorName = author.memberNick;
 		}
 
 		switch (likeType) {
@@ -33,19 +33,19 @@ export class NotificationService {
 				break;
 			case 'PROPERTY':
 				const property = await this.propertyModel.findById(likeId);
-				receiverId = property.memberId; 
-        notificationDesc = `${authorName} liked your vehicle "${property.propertyModel}"`
+				receiverId = property.memberId;
+				notificationDesc = `${authorName} liked your vehicle "${property.propertyModel}"`;
 				break;
 			case 'ARTICLE':
 				const article = await this.boardArticle.findById(likeId);
-				receiverId = article.memberId; 
-        notificationDesc = `${authorName} liked your vehicle "${article.articleTitle}"`
+				receiverId = article.memberId;
+				notificationDesc = `${authorName} liked your vehicle "${article.articleTitle}"`;
 				break;
 			default:
 				throw new Error('Unknown like type');
 		}
 
-    const notification = new this.notificationModel({
+		const notification = new this.notificationModel({
 			notificationType: 'LIKE',
 			notificationGroup: likeType,
 			notificationTitle: `${author.memberNick} New Like on ${likeType}`,
@@ -58,10 +58,10 @@ export class NotificationService {
 		await notification.save();
 	}
 
-  async createNotificationForUnlike(likeType: string, likeId: ObjectId, authorId: ObjectId): Promise<void> {
+	async createNotificationForUnlike(likeType: string, likeId: ObjectId, authorId: ObjectId): Promise<void> {
 		let receiverId: ObjectId;
 		let authorName = '';
-    let notificationDesc = '';
+		let notificationDesc = '';
 		const author = await this.memberModel.findById(authorId);
 		if (author) {
 			authorName = author.memberNick; // Assuming 'memberNick' is the field for user's nickname
@@ -70,17 +70,17 @@ export class NotificationService {
 		switch (likeType) {
 			case 'MEMBER':
 				receiverId = likeId;
-        notificationDesc = `${authorName} liked you`;
+				notificationDesc = `${authorName} liked you`;
 				break;
 			case 'PROPERTY':
 				const property = await this.propertyModel.findById(likeId);
 				receiverId = property.memberId;
-        notificationDesc = `${authorName} liked your ${this.propertyModel}`;
+				notificationDesc = `${authorName} liked your ${this.propertyModel}`;
 				break;
 			case 'ARTICLE':
 				const article = await this.boardArticle.findById(likeId);
 				receiverId = article.memberId;
-        notificationDesc = `${authorName} liked your ${this.boardArticle}`;
+				notificationDesc = `${authorName} liked your ${this.boardArticle}`;
 				break;
 			default:
 				throw new Error('Unknown like type');
@@ -118,27 +118,27 @@ export class NotificationService {
 	): Promise<void> {
 		let receiverId: ObjectId;
 		let authorName = '';
-    let notificationDesc = '';
+		let notificationDesc = '';
 		const author = await this.memberModel.findById(authorId);
 		if (!author) {
 			console.error(`Author with ID ${authorId} not found.`);
-			return; 
+			return;
 		}
-		authorName = author.memberNick; 
+		authorName = author.memberNick;
 		switch (commentType) {
 			case 'PROPERTY':
 				const property = await this.propertyModel.findById(commentId);
 				receiverId = property.memberId;
-        notificationDesc = `${authorName} commented on your ${commentType} as ${commentContent}`;
+				notificationDesc = `${authorName} commented on your ${commentType} as ${commentContent}`;
 				break;
 			case 'ARTICLE':
 				const article = await this.boardArticle.findById(commentId);
 				receiverId = article.memberId;
-        notificationDesc = `${authorName} commented on your ${commentType} as ${commentContent}`;
+				notificationDesc = `${authorName} commented on your ${commentType} as ${commentContent}`;
 				break;
 			case 'MEMBER':
-				receiverId = commentId; 
-        notificationDesc = `${authorName} commented on you as ${commentContent}`;
+				receiverId = commentId;
+				notificationDesc = `${authorName} commented on you as ${commentContent}`;
 				break;
 			default:
 				throw new Error('Unknown comment type');
@@ -181,7 +181,7 @@ export class NotificationService {
 		const following = await this.memberModel.findById(followingId);
 
 		if (!follower || !following) {
-			return; 
+			return;
 		}
 
 		const notification = new this.notificationModel({
