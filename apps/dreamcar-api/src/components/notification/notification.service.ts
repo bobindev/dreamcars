@@ -202,7 +202,7 @@ export class NotificationService {
 			notificationType: 'CONTACT',
 			notificationGroup: 'MEMBER',
 			notificationTitle: `New Message`,
-			notificationDesc: ` You have a new message regarding your property ${title.propertyModel} : Name: ${input.name}, Phone: ${input.phone}, Email: ${input.email},  Message: ${input.message}.`,
+			notificationDesc: ` You have a new message regarding ${title.propertyModel} : Name: ${input.name}, Phone: ${input.phone}, Email: ${input.email},  Message: ${input.message}.`,
 			authorId: memberId,
 			receiverId: title.memberId,
 		});
