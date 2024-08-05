@@ -17,7 +17,7 @@ export class Contact {
 	message: string;
 
 	@Field(() => String)
-	contactRefId: ObjectId;
+	contactRefId: String;
 
 	@Field(() => String)
 	memberId: ObjectId;

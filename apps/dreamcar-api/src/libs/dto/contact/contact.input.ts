@@ -24,7 +24,7 @@ export class ContactInput {
 
 	@IsNotEmpty()
 	@Field(() => String)
-	contactRefId: ObjectId;
+	contactRefId: String;
 
 	memberId?: ObjectId;
 }
@@ -33,7 +33,7 @@ export class ContactInput {
 class ConISearch {
 	@IsNotEmpty()
 	@Field(() => String)
-	contactRefId: ObjectId;
+	contactRefId: String;
 }
 
 @InputType()

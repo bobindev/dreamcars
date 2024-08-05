@@ -34,7 +34,7 @@ export class NotificationService {
 			case 'PROPERTY':
 				const property = await this.propertyModel.findById(likeId);
 				receiverId = property.memberId;
-				notificationDesc = `${authorName} liked your vehicle "${property.propertyModel}"`;
+				notificationDesc = `${authorName} liked your item "${property.propertyModel}"`;
 				break;
 			case 'ARTICLE':
 				const article = await this.boardArticle.findById(likeId);
