@@ -34,7 +34,7 @@ export class NotificationService {
 			case 'PROPERTY':
 				const property = await this.propertyModel.findById(likeId);
 				receiverId = property.memberId;
-				notificationDesc = `${authorName} liked your item "${property.propertyModel}"`;
+				notificationDesc = `${authorName} liked your vehicle: "${property.propertyModel}"`;
 				break;
 			case 'ARTICLE':
 				const article = await this.boardArticle.findById(likeId);
@@ -48,7 +48,7 @@ export class NotificationService {
 		const notification = new this.notificationModel({
 			notificationType: 'LIKE',
 			notificationGroup: likeType,
-			notificationTitle: `${author.memberNick} New Like on ${likeType}`,
+			notificationTitle: `New Like`,
 			notificationDesc: `Your ${likeType.toLowerCase()} got a new like!`,
 			authorId,
 			receiverId,
@@ -89,7 +89,7 @@ export class NotificationService {
 		const notification = new this.notificationModel({
 			notificationType: 'LIKE',
 			notificationGroup: likeType,
-			notificationTitle: `${authorName} removed their like from your ${likeType.toLowerCase()}`,
+			notificationTitle: `Remove like`,
 			notificationDesc: `${authorName} no longer likes your ${likeType.toLowerCase()}.`,
 			authorId,
 			receiverId,
@@ -167,7 +167,7 @@ export class NotificationService {
 		const notification = new this.notificationModel({
 			notificationType: 'FOLLOW',
 			notificationGroup: 'MEMBER',
-			notificationTitle: `${follower.memberNick} started following you`,
+			notificationTitle: `New subscription`,
 			notificationDesc: `${follower.memberNick} has started following ${following.memberNick}.`,
 			authorId: followerId,
 			receiverId: followingId,
@@ -187,7 +187,7 @@ export class NotificationService {
 		const notification = new this.notificationModel({
 			notificationType: 'UNFOLLOW',
 			notificationGroup: 'MEMBER',
-			notificationTitle: `${follower.memberNick} has stopped following you`,
+			notificationTitle: `Unsubscribtion`,
 			notificationDesc: `${follower.memberNick} has stopped following ${following.memberNick}.`,
 			authorId: followerId,
 			receiverId: followingId,
